@@ -72,8 +72,8 @@ bool Student::addKeyWord(keyWord * keys, std::string enteredWord) {
 
         std::ofstream outfile;
 
-        outfile.open("keyWords.txt", std::ios_base::app);
-        std::string outputStr = enteredWord + " " + std::to_string(value) + " " + comment;
+        outfile.open("keyWords.txt", std::ios_base::app | std::ios_base::out);
+        std::string outputStr = enteredWord + " " + std::to_string(value) + " " + comment + "\n";
         outfile << outputStr;
 
         return true;

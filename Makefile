@@ -1,9 +1,15 @@
 FLAGS= -ggdb -std=c++11 -Wall -Wextra
 
-all: Assignment.x
+all: Assignment.x listManager.x
 
 Assignment.x: Assignment.o AssignmentMeta.o Student.o Comment.o main.o keyWord.o
 	g++ $(FLAGS) Assignment.o AssignmentMeta.o Student.o Comment.o main.o keyWord.o -o Assignment.x
+
+listManager.x: listManager.o keyWord.o 
+	g++ $(FLAGS) listManager.o  keyWord.o -o listManager.x
+
+listManager.o: listManager.cpp keyWord.hpp
+	g++ $(FLAGS) -c listManager.cpp -o listManager.o
 
 Assignment.o: Assignment.cpp Assignment.hpp AssignmentMeta.hpp Student.hpp keyWord.hpp
 	g++ $(FLAGS) -c Assignment.cpp -o Assignment.o
@@ -26,6 +32,10 @@ main.o: main.cpp Assignment.hpp
 run:
 	make
 	./Assignment.x
+
+manage:
+	make
+	./listManager.x
 
 clean:
 	rm *.o *.x

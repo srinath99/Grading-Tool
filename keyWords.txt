@@ -4,3 +4,47 @@ decomp 10 Your functions must be broken down according to the diagram from the l
 description 4 No initial file comment description [style convention 1a]
 simplify 5 No simplify() function was implemented in your solution.
 initial 6 No initial file comment [style convention 1a]
+6blank 1 6 blanks lines must separate every function definition.
+document 12 No documentation was provided. [Style convention 1]
+functions 4 Your functions must have comments above each of them describing what the function does. This comment should explain the role of each parameter and refer to them by name, and be at least 50 words long for complex functions. [Style convention 1C]
+header2 4 Your header comment needs to list pre and post conditions along with all function prototypes used in the class. For more information, read style convention 1D-1.
+initial2 4 No initial file comment [style convention 1a]
+names 2 Your variable names shouldn’t use any abbreviations, and should clearly indicate their purpose by their name. Variable names should not be single letters. [style convention 3a]
+paste 2 Please paste the output in the bottom of all your files.
+repeated 2 Your submission has a lot of repeated code that can be simplified. [Style convention 6]
+value 2 Your values should always be passed by reference instead of by value. When this is done, const should also be used for the parameter.
+values 2 Your values should be stored as global constants as per the assignment specification. No number other than 1 or 0 should usually show up in your program. [style convention 7a]
+cheater 0 We have noticed that this code is nearly identical to the solution to a similar assignment online. According to the syllabus, that means that I have to give it a 0. If you have any questions, please send them to me via email.
+diagram 10 Your functions must be broken down according to the diagram from the lesson. [Style convention 4]
+global 10 Global variables should never be used in your program. [Style convention 7B]
+header 0 Your header comment needs to list pre and post conditions for all function prototypes. For more information, read style convention 1D-1.
+indent 1 The body of your functions, loops, and if statements should be indented exactly 4 spaces. [Style convention 5]
+info 4 No initial file comment info other than the description [style convention 1a]
+invariant 0 Your implementation file should start with a class invariant. This is different from the header comment. Read style convention 1D-2 for more information.
+noconst 0 Some of your values aren’t stored as global constants. In order to store them as global constants, you’ll have to use a similar statement to this: `const int value = 25;` This should be outside your main function, after the preprocessor directives.
+order 2 Your code should start with function definitions, then the main function, and then your function implementations.
+break 1  You should not use a statement like "break" (except in a switch statement) to exit a loop. [Style convention 7c]
+const 0  const was not used everywhere it was needed per the assignment specifications.
+decomp 10  Your functions must be broken down according to the diagram from the lesson. [Style convention 4]
+description 4  No initial file comment description [style convention 1a]
+simplify 5  No simplify() function was implemented in your solution.
+initial 6  No initial file comment [style convention 1a]
+6blank 1  6 blanks lines must separate every function definition.
+document 12  No documentation was provided. [Style convention 1]
+functions 4  Your functions must have comments above each of them describing what the function does. This comment should explain the role of each parameter and refer to them by name, and be at least 50 words long for complex functions. [Style convention 1C]
+header2 4  Your header comment needs to list pre and post conditions along with all function prototypes used in the class. For more information, read style convention 1D-1.
+initial2 4  No initial file comment [style convention 1a]
+names 2  Your variable names shouldn’t use any abbreviations, and should clearly indicate their purpose by their name. Variable names should not be single letters. [style convention 3a]
+paste 2  Please paste the output in the bottom of all your files.
+repeated 2  Your submission has a lot of repeated code that can be simplified. [Style convention 6]
+value 2  Your values should always be passed by reference instead of by value. When this is done, const should also be used for the parameter.
+values 2  Your values should be stored as global constants as per the assignment specification. No number other than 1 or 0 should usually show up in your program. [style convention 7a]
+cheater 0  We have noticed that this code is nearly identical to the solution to a similar assignment online. According to the syllabus, that means that I have to give it a 0. If you have any questions, please send them to me via email.
+diagram 10  Your functions must be broken down according to the diagram from the lesson. [Style convention 4]
+global 10  Global variables should never be used in your program. [Style convention 7B]
+header 0  Your header comment needs to list pre and post conditions for all function prototypes. For more information, read style convention 1D-1.
+indent 1  The body of your functions, loops, and if statements should be indented exactly 4 spaces. [Style convention 5]
+info 4  No initial file comment info other than the description [style convention 1a]
+invariant 0  Your implementation file should start with a class invariant. This is different from the header comment. Read style convention 1D-2 for more information.
+noconst 0  Some of your values aren’t stored as global constants. In order to store them as global constants, you’ll have to use a similar statement to this: `const int value = 25;` This should be outside your main function, after the preprocessor directives.
+order 2  Your code should start with function definitions, then the main function, and then your function implementations.
