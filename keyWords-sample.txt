@@ -1,0 +1,6 @@
+break 1 You should not use a statement like "break" (except in a switch statement) to exit a loop. [Style convention 7c]
+const 0 const was not used everywhere it was needed per the assignment specifications.
+decomp 10 Your functions must be broken down according to the diagram from the lesson. [Style convention 4]
+description 4 No initial file comment description [style convention 1a]
+simplify 5 No simplify() function was implemented in your solution.
+initial 6 No initial file comment [style convention 1a]
