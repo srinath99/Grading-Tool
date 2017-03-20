@@ -15,7 +15,7 @@ public:
     void printAssignmentInfo();
     void printStudentInfo();
     bool addStudent(Student * studentInfo);
-    bool readStudents();
+    bool readStudents(aMeta * meta);
 
 private:
     aMeta * assignmentData;

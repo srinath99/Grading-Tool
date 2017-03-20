@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "Comment.hpp"
+#include "colors.h"
 
 Comment::Comment(int theDeduction, std::string theKey) {
     deduction = theDeduction;

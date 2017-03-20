@@ -2,6 +2,7 @@
 #include <vector>
 #include "Comment.hpp"
 #include "keyWord.hpp"
+#include "AssignmentMeta.hpp"
 
 #ifndef __Student_DEF
 #define __Student_DEF
@@ -9,8 +10,8 @@
 class Student {
 public:
     Student(std::string fname, char lInit);
-    void printStudent();
-    bool runGrading(keyWord * keys);
+    void printStudent(aMeta * meta);
+    bool runGrading(keyWord * keys, aMeta * meta);
 
 
 private:

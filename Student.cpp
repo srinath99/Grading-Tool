@@ -1,5 +1,7 @@
 #include "Student.hpp"
 #include "keyWord.hpp"
+#include "AssignmentMeta.hpp"
+#include "colors.h"
 #include <iostream>
 #include <fstream>
 
@@ -10,16 +12,25 @@ Student::Student(std::string fname, char lInit) {
     percentage = 0;
 }
 
-void Student::printStudent() {
-    std::cout << first_name << " " << last_init << ". ----" << std::endl;
-    std::cout << totalScore << " points for " << percentage << "%" << std::endl;
+void Student::printStudent(aMeta * meta) {
+    std::cout << std::endl;
+    std::cout << PINK << first_name << " " << last_init << ". ----" << ENDCOLORS << std::endl;
+    std::cout << totalScore << " points for " << percentage << "%\n" << std::endl;
     printComments();
+    if (percentage < 50.0) {
+        std::cout << RED << "\nThis score received less than 50%. Please don't include\n the submission in your comment.\n" << ENDCOLORS;
+    } else {
+        std::cout << "\n";
+        meta -> outPutFinishedMessage();
+        std::cout << "\n";
+    }
+    std::cout << "\n";
 }
 
-bool Student::runGrading(keyWord * keys) {
+bool Student::runGrading(keyWord * keys, aMeta * meta) {
     std::string word;
 
-    std::cout << "Please enter the keyword for the comment you'd like to enter (done to finish): " << std::endl;
+    std::cout << BLUE << "Please enter the keyword for the comment you'd like to enter (done to finish): " << ENDCOLORS;
     std::cin >> word;
 
     while (word != "done") {
@@ -40,9 +51,12 @@ bool Student::runGrading(keyWord * keys) {
             }
         }
 
-        std::cout << "Please enter the keyword for the comment you'd like to enter (done to finish): " << std::endl;
+        std::cout << BLUE << "Please enter the keyword for the comment you'd like to enter (done to finish): " << ENDCOLORS;
         std::cin >> word;
     }
+    int numWrong = totalScore;
+    totalScore = meta -> getTotalScore() + numWrong;
+    percentage = (double)totalScore / meta -> getTotalScore() * 100;
 
     return true;
 }
@@ -56,16 +70,16 @@ bool Student::addComment(int value, std::string comment) {
 
 bool Student::addKeyWord(keyWord * keys, std::string enteredWord) {
     char result;
-    std::cout << "Would you like to enter a new keyWord for " << enteredWord << " ? (y/n)";
+    std::cout << BLUE << "Would you like to enter a new keyWord for " << enteredWord << " ? (y/n)" << ENDCOLORS;
     std::cin >> result;
 
     if (result == 'y' || result == 'Y') {
         int value;
         std::string comment;
 
-        std::cout << "Enter the point reduction for the keyWord (integer): ";
+        std::cout << BLUE <<  "Enter the point reduction for the keyWord (integer): " << ENDCOLORS;
         std::cin >> value;
-        std::cout << "Enter the full text for the comment: ";
+        std::cout << BLUE << "Enter the full text for the comment: " << ENDCOLORS;
         std::cin.ignore();
         std::getline(std::cin, comment);
         keys -> addKey(enteredWord, value, comment);
