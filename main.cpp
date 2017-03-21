@@ -20,6 +20,11 @@ int main() {
     // Store students, one at a time
     current -> readStudents(meta);
     printReport(meta, current);
+
+    delete meta;
+    delete current;
+
+    return 0;
 }
 
 aMeta * getAssignmentInfo() {
