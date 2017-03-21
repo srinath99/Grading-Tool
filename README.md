@@ -1,4 +1,4 @@
-# Grading-Tool
+# Grading Tool
 Useful for quickly grading students' computer science assignments based on pre-defined penalties
 
 <br>
