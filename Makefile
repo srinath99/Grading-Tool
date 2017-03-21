@@ -30,11 +30,11 @@ main.o: main.cpp Assignment.hpp colors.h
 	g++ $(FLAGS) -c main.cpp -o main.o
 
 run:
-	make
+	make Assignment.x
 	./Assignment.x
 
 manage:
-	make
+	make listManager.x
 	./listManager.x
 
 clean:
