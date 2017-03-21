@@ -114,3 +114,13 @@ void Student::printComments() {
     for (std::vector<Comment *>::iterator it = allComments.begin(); it != allComments.end(); ++it)
         (*it) -> printComment();
 }
+
+void Student::writeStudentToFile(aMeta * meta) {
+    std::string outPutFile = meta -> getAssignmentIdentifier() + "_results.txt";
+    std::ofstream out;
+    out.open(outPutFile, std::ios_base::app | std::ios_base::out);
+    std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
+    std::cout.rdbuf(out.rdbuf()); //redirect std::cout to outPutStore.txt
+    printStudent(meta);
+    std::cout.rdbuf(coutbuf); //reset to standard output again
+}

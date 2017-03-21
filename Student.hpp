@@ -12,7 +12,7 @@ public:
     Student(std::string fname, char lInit);
     void printStudent(aMeta * meta);
     bool runGrading(keyWord * keys, aMeta * meta);
-
+    void writeStudentToFile(aMeta * meta);
 
 private:
     std::string first_name;

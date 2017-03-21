@@ -38,6 +38,7 @@ bool Assignment::readStudents(aMeta * meta) {
         myStudent -> runGrading(keys, meta);
         addStudent(myStudent);
         myStudent -> printStudent(meta);
+        myStudent -> writeStudentToFile(meta);
         // meta -> outPutFinishedMessage();
         std::cout << BLUE << "Enter the student's first name (quit to end): " << ENDCOLORS;
         std::cin >> fname;

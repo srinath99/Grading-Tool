@@ -39,3 +39,6 @@ manage:
 
 clean:
 	rm *.o *.x
+
+reset:
+	rm *_results.txt

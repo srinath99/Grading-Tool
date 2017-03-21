@@ -24,6 +24,8 @@ void aMeta::printClassMeta() {
     std::cout << "Class name: " << classLetters << classNumber << std::endl;
     std::cout << "Current assignment: " << assignmentName << std::endl;
     std::cout << "Assignment points: " << totalScore << std::endl;
+    std::cout << "\nCompletion Message:\n";
+    outPutFinishedMessage();
     std::cout << "-------------------------------------------------------------\n" << ENDCOLORS << std::endl;
 }
 
@@ -37,7 +39,11 @@ std::string aMeta::getAName() {
 
 void aMeta::outPutFinishedMessage() {
     std::cout << initialMessage << std::endl;
-    std::cout << baseURL + classNumber + "/s" + assignmentName + "/s" + assignmentName + ".shtml" << std::endl;
+    std::cout << "URL: " << baseURL + classNumber + "/s" + assignmentName + "/s" + assignmentName + ".shtml" << std::endl;
     std::cout << "Username: " << "a" + assignmentName << std::endl;
     std::cout << "Password: " << solutionPWD << std::endl;
+}
+
+std::string aMeta::getAssignmentIdentifier() {
+    return classLetters + classNumber + "_assignment" + assignmentName;
 }
