@@ -7,6 +7,5 @@
 #define CYAN "\033[1;36m"
 #define WHITE "\033[1;37m"
 #define UNDERLINE "\033[4m"
-#define BLINK "\033[5m"
 
 #define ENDCOLORS "\033[0m"
