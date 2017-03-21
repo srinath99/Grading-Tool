@@ -43,8 +43,8 @@ int keyWord::getValue(std::string key) {
 }
 
 void keyWord::printComments() {
-    std::cout << "Existing deductions, keywords, and values ----------------------------------------------------------\n" << std::endl;
+    std::cout << GREEN << "\nExisting deductions, keywords, and values ----------------------------------------------------------\n" << ENDCOLORS << std::endl;
     for( auto iter = keyWordComment.begin(); iter != keyWordComment.end(); ++iter )
-        std::cout << iter -> first << " -" << getValue(iter -> first) << " point(s) - " <<  iter -> second << "\n\n";
-    std::cout << "----------------------------------------------------------------------------------------------------\n" << std::endl;
+        std::cout << GREEN << iter -> first << ENDCOLORS << " -" << BLUE << getValue(iter -> first) << ENDCOLORS << " point(s) - " <<  iter -> second << "\n\n";
+    std::cout << GREEN << "----------------------------------------------------------------------------------------------------\n" << ENDCOLORS << std::endl;
 }
