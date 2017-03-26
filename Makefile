@@ -41,4 +41,11 @@ clean:
 	rm *.o *.x
 
 reset:
+	make backup
 	rm *_results.txt
+
+backup:
+	./backup.sh
+
+restore:
+	./restore.sh
