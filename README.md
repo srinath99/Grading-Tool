@@ -7,10 +7,22 @@ Useful for quickly grading students' computer science assignments based on pre-d
 
 `make run` To complile and start a grading session
 <br>
-<em>note: output is not currently saved. Must be copied and pasted into Canvas (or other grading system)</em>
+<em>note: output is saved after each student in a file. The naming convention is as follows: 
+<br>
+`<class letters><class numbers>_assignment<assignment number>_results.txt`</em>
 <br>
 <br>
+<h4>Backups</h4>
+<p>
+Text files can be backed up (and sometimes are automatically) 
 
+`make backup` triggers an automatic backup that moves all the text files (existing output and keyWord list)
+
+`make reset` removes all existing output files, but creates a full backup first
+
+`make restore` restores the backup (full restore of both keyWord list and output file(s))
+</p>
+<br>
 <h4>Manage Comments</h4>
 
 `make manage` To compile and run a small program to add keys and comments to the list.
