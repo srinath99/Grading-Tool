@@ -5,6 +5,6 @@ if [ ! -d backups ]; then
 	exit 0
 fi
 
-cp backups/*.txt .;
+cp backups/latest/*.txt .;
 
 echo "Restore complete!"
