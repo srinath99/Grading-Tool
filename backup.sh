@@ -1,14 +1,14 @@
 #!/bin/bash
 
-mkdir -p backups;
-cd backups;
+mkdir -p .backups;
+cd .backups;
 CURRENTDIRNAME=$(date '+%d-%b-%Y-%H-%M-%S');
 mkdir $CURRENTDIRNAME;
 cd ..;
 
-cp *.txt backups/$CURRENTDIRNAME;
+cp *.txt .backups/$CURRENTDIRNAME;
 
-cd backups;
+cd .backups;
 
 ln -sfn $CURRENTDIRNAME/ latest;
 
