@@ -7,14 +7,14 @@ Useful for quickly grading students' computer science assignments based on pre-d
 
 `make run` To complile and start a grading session
 <br>
-<em>note: output is saved after each student in a file. The naming convention is as follows: 
+<em>note: output is saved after each student in a file. The naming convention is as follows:
 <br>
 `<class letters><class numbers>_assignment<assignment number>_results.txt`</em>
 <br>
 <br>
 <h4>Backups</h4>
 <p>
-Text files can be backed up (and sometimes are automatically) 
+Text files can be backed up (and sometimes are automatically)
 
 `make backup` triggers an automatic backup that moves all the text files (existing output and keyWord list)
 
@@ -26,6 +26,8 @@ Text files can be backed up (and sometimes are automatically)
 <h4>Manage Comments</h4>
 
 `make manage` To compile and run a small program to add keys and comments to the list.
+`make list` To view a formatted and colored list of all the keys and comments, but with no ability to edit.
+
 
 <br>
 <hr>
