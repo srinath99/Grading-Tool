@@ -19,8 +19,9 @@ private:
     std::string classNumber;
     std::string classLetters;
     std::string initialMessage = "Good work on this assignment. Here is the information to view\nthe solution. Please do not share it with anyone else.";
-    std::string baseURL = "http://daveteaches.com/";
     std::string solutionPWD;
+    std::string patternMatchURL();
+
 
 
 };
