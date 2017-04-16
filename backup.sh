@@ -29,19 +29,21 @@ fi
 # Prepare to create backup
 echo ""
 cd .backups;
-
+echo `pwd`
 # Create directory for lastest backup
 CURRENTDIRNAME=$(date '+%d-%b-%Y-%H-%M-%S');
 mkdir $CURRENTDIRNAME;
 echo "Creating a backup for $CURRENTDIRNAME"
 cd ..;
+echo `pwd`
 
 # Copy files into new backup folder
-cp *.txt .backups/$CURRENTDIRNAME;
+cp -v *.txt .backups/$CURRENTDIRNAME;
 
 # Update 'latest' link
 cd .backups;
-ln -sfn $CURRENTDIRNAME/ latest;
+rm latest
+ln -s $CURRENTDIRNAME latest;
 cd ..;
 
 #Update size for output
