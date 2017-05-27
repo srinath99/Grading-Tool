@@ -84,18 +84,19 @@ bool Student::addComment(int value, std::string comment) {
 
 bool Student::addKeyWord(keyWord * keys, std::string enteredWord) {
     char result;
-    std::cout << BLUE << "Would you like to enter a new keyWord for " << enteredWord << " ? (y/n)" << ENDCOLORS;
+    std::cout << BLUE << "Would you like to enter a new keyWord for " << enteredWord << " ? (y/n) " << ENDCOLORS;
     std::cin >> result;
 
     if (result == 'y' || result == 'Y') {
         int value;
         std::string comment;
 
-        std::cout << BLUE <<  "Enter the point reduction for the keyWord (integer): " << ENDCOLORS;
-        std::cin >> value;
         std::cout << BLUE << "Enter the full text for the comment: " << ENDCOLORS;
         std::cin.ignore();
         std::getline(std::cin, comment);
+        std::cout << BLUE <<  "Enter the point reduction for the keyWord (integer): " << ENDCOLORS;
+        std::cin >> value;
+
         keys -> addKey(enteredWord, value, comment);
 
         std::ofstream outfile;

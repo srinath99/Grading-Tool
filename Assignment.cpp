@@ -40,7 +40,7 @@ bool Assignment::readStudents(aMeta * meta) {
         myStudent -> printStudent(meta);
         myStudent -> writeStudentToFile(meta);
         // meta -> outPutFinishedMessage();
-        std::cout << BLUE << "Enter the student's first name (quit to end): " << ENDCOLORS;
+        std::cout << BLUE << "Enter the student's first name and last initial (quit to end): " << ENDCOLORS;
         std::cin >> fname;
     } while (fname != "quit");
 
