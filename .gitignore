@@ -1,6 +1,7 @@
 *.o
 *.x
 keyWords.txt
+currentClass.txt
 *_results.txt
 backups
 .backups

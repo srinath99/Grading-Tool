@@ -32,7 +32,7 @@ bool Assignment::readStudents(aMeta * meta) {
     std::cout << BLUE << "Enter the student's first name and last initial (quit to end): " << ENDCOLORS;
     std::cin >> fname;
 
-    do {
+    while (fname != "quit") {
         std::cin >> linit;
         Student * myStudent = new Student(fname, linit);
         myStudent -> runGrading(keys, meta);
@@ -42,7 +42,8 @@ bool Assignment::readStudents(aMeta * meta) {
         // meta -> outPutFinishedMessage();
         std::cout << BLUE << "Enter the student's first name and last initial (quit to end): " << ENDCOLORS;
         std::cin >> fname;
-    } while (fname != "quit");
+    }
+    remove("currentClass.txt");
 
     return true;
 }

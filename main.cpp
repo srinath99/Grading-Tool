@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "Assignment.hpp"
 #include "AssignmentMeta.hpp"
 #include "Student.hpp"
@@ -12,8 +13,33 @@ void printReport(aMeta * meta, Assignment * assignment);
 
 
 int main() {
+
+    std::ifstream currentFile;
+    currentFile.open("currentClass.txt");
+    aMeta * meta = nullptr;
+    if (currentFile.is_open()) {
+        char result;
+        std::cout << BLUE << "There's an existing file being graded. Would you like to load the settings? (y/n) " << ENDCOLORS;
+        std::cin >> result;
+        if (result == 'y' || result == 'Y') {
+            std::string letters, classLetters, assignmentName, password;
+            int numPoints;
+
+            currentFile >> letters;
+            currentFile >> classLetters;
+            currentFile >> assignmentName;
+            currentFile >> numPoints;
+            currentFile >> password;
+            
+            meta = new aMeta(numPoints, assignmentName, letters, classLetters, password);
+
+        } else {
+            meta = getAssignmentInfo();
+        }
+    } else {
+        meta = getAssignmentInfo();
+    }
     // Store information on the current assignment
-    aMeta * meta = getAssignmentInfo();
     Assignment * current = new Assignment(meta);
     current -> printAssignmentInfo();
 
@@ -50,6 +76,10 @@ aMeta * getAssignmentInfo() {
     std::cin >> password;
 
     aMeta * data = new aMeta(aScore, aName, letters, number, password);
+
+    std::ofstream newFile("currentClass.txt");
+    newFile << letters << std::endl << number << std::endl << aName << std::endl << aScore << std::endl << password;
+    newFile.close();
     return data;
 }
 
