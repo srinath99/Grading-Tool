@@ -30,12 +30,13 @@ int main() {
             currentFile >> assignmentName;
             currentFile >> numPoints;
             currentFile >> password;
-            
+
             meta = new aMeta(numPoints, assignmentName, letters, classLetters, password);
 
         } else {
             meta = getAssignmentInfo();
         }
+        currentFile.close();
     } else {
         meta = getAssignmentInfo();
     }
