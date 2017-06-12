@@ -29,4 +29,7 @@ int main() {
         std::cout << BLUE << "Enter the keyWord (something short and memorable - quit to stop): " << ENDCOLORS;
         std::cin >> enteredWord;
     }
+
+    delete keys;
+    return 0;
 }

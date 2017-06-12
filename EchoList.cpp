@@ -7,4 +7,7 @@ int main() {
     keyWord * keys = new keyWord();
     keys -> readKeys();
     keys -> printComments();
+
+    delete keys;
+    return 0;
 }
