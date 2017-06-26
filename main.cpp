@@ -5,14 +5,18 @@
 #include "AssignmentMeta.hpp"
 #include "Student.hpp"
 #include "colors.h"
-
+#include <wchar.h>
+#include <windows.h>
 
 aMeta * getAssignmentInfo();
 Student * gradeOneStudent(std::string);
 void printReport(aMeta * meta, Assignment * assignment);
+bool initializeColors();
 
 
 int main() {
+    if (!initializeColors())
+        return -1;
 
     std::ifstream currentFile;
     currentFile.open("currentClass.txt");
@@ -55,6 +59,7 @@ int main() {
 }
 
 aMeta * getAssignmentInfo() {
+
     std::string letters;
     std::cout << BLUE << "Enter the class letters (i.e CS/CIS/etc.): " << ENDCOLORS;
     std::cin >> letters;
@@ -88,4 +93,54 @@ void printReport(aMeta * meta, Assignment * current) {
     std::cout << GREEN << "\n\nFINAL GRADING REPORT FOR ASSIGNMENT ";
     std::cout << meta -> getAName() << ":\n" << ENDCOLORS;
     current -> printStudentInfo();
+}
+
+bool initializeColors() {
+    // Set output mode to handle virtual terminal sequences
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hOut == INVALID_HANDLE_VALUE)
+    {
+        return false;
+    }
+    HANDLE hIn = GetStdHandle(STD_INPUT_HANDLE);
+    if (hIn == INVALID_HANDLE_VALUE)
+    {
+        return false;
+    }
+
+    DWORD dwOriginalOutMode = 0;
+    DWORD dwOriginalInMode = 0;
+    if (!GetConsoleMode(hOut, &dwOriginalOutMode))
+    {
+        return false;
+    }
+    if (!GetConsoleMode(hIn, &dwOriginalInMode))
+    {
+        return false;
+    }
+
+    DWORD dwRequestedOutModes = 4 | 8;
+    DWORD dwRequestedInModes = 512;
+
+    DWORD dwOutMode = dwOriginalOutMode | dwRequestedOutModes;
+    if (!SetConsoleMode(hOut, dwOutMode))
+    {
+        // we failed to set both modes, try to step down mode gracefully.
+        dwRequestedOutModes = 4;
+        dwOutMode = dwOriginalOutMode | dwRequestedOutModes;
+        if (!SetConsoleMode(hOut, dwOutMode))
+        {
+            // Failed to set any VT mode, can't do anything here.
+            return false;
+        }
+    }
+
+    DWORD dwInMode = dwOriginalInMode | 512;
+    if (!SetConsoleMode(hIn, dwInMode))
+    {
+        // Failed to set VT input mode, can't do anything here.
+        return false;
+    }
+
+    return true;
 }

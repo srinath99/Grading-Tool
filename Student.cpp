@@ -4,18 +4,20 @@
 #include "colors.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
-Student::Student(std::string fname, char lInit) {
+Student::Student(std::string fname, char lInit, std::string classNumber) {
     first_name = fname;
     last_init = lInit;
     totalScore = 0;
     percentage = 0;
+    class_number = classNumber;
 }
 
 void Student::printStudent(aMeta * meta) {
     std::cout << std::endl;
     std::cout << PINK << first_name << " " << last_init << ". ----" << ENDCOLORS << std::endl;
-    std::cout << totalScore << " points for " << percentage << "%\n" << std::endl;
+    std::cout << "Hi " << first_name << ",\n\n" << getQualifier(percentage) << "on your assignment.";
     printComments();
     if (percentage < 50.0) {
         std::cout << RED << "\nThis score received less than 50%. Please don't include\nthe solution in your comment.\n" << ENDCOLORS;
@@ -100,9 +102,12 @@ bool Student::addKeyWord(keyWord * keys, std::string enteredWord) {
         keys -> addKey(enteredWord, value, comment);
 
         std::ofstream outfile;
+        std::string fileName = "keyWords_" + class_number + ".txt";
 
-        outfile.open("keyWords.txt", std::ios_base::app | std::ios_base::out);
-        std::string outputStr = enteredWord + " " + std::to_string(value) + " " + comment + "\n";
+        outfile.open(fileName, std::ios_base::app | std::ios_base::out);
+        std::stringstream ss;
+        ss << value;
+        std::string outputStr = enteredWord + " " + ss.str() + " " + comment + "\n";
         outfile << outputStr;
 
         return true;
@@ -111,9 +116,13 @@ bool Student::addKeyWord(keyWord * keys, std::string enteredWord) {
 }
 
 void Student::printComments() {
-    std::cout << "Comments: " << std::endl;
-    for (std::vector<Comment *>::iterator it = allComments.begin(); it != allComments.end(); ++it)
-        (*it) -> printComment();
+    if (!allComments.empty()) {
+        std::cout << " Here are some things I noticed about your program:\n" << std::endl;
+        for (std::vector<Comment *>::iterator it = allComments.begin(); it != allComments.end(); ++it)
+            (*it) -> printComment();
+    }
+    else
+        std::cout << std::endl;
 }
 
 void Student::writeStudentToFile(aMeta * meta) {
@@ -124,4 +133,18 @@ void Student::writeStudentToFile(aMeta * meta) {
     std::cout.rdbuf(out.rdbuf()); //redirect std::cout to outPutStore.txt
     printStudent(meta);
     std::cout.rdbuf(coutbuf); //reset to standard output again
+}
+
+std::string Student::getQualifier(int percentage)
+{
+    if (percentage == 100)
+        return "Excellent work ";
+    else if (percentage >= 90)
+        return "Great work ";
+    else if (percentage >= 80)
+        return "Good work ";
+    else if (percentage >= 70)
+        return "Nice work ";
+    else
+        return "Good start ";
 }

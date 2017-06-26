@@ -80,3 +80,7 @@ std::string aMeta::patternMatchURL() {
     return result;
 
 }
+
+std::string aMeta::getClassNumber() {
+    return classNumber;
+}

@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <cstdio>
 #include "AssignmentMeta.hpp"
 #include "Assignment.hpp"
 #include "Student.hpp"
@@ -25,7 +26,7 @@ bool Assignment::addStudent(Student * myStudent) {
 
 bool Assignment::readStudents(aMeta * meta) {
     keyWord * keys = new keyWord();
-    keys -> readKeys();
+    keys -> readKeys(meta -> getClassNumber());
 
     std::string fname;
     char linit;
@@ -34,7 +35,7 @@ bool Assignment::readStudents(aMeta * meta) {
 
     while (fname != "quit") {
         std::cin >> linit;
-        Student * myStudent = new Student(fname, linit);
+        Student * myStudent = new Student(fname, linit, meta -> getClassNumber());
         myStudent -> runGrading(keys, meta);
         addStudent(myStudent);
         myStudent -> printStudent(meta);

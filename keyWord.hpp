@@ -12,7 +12,7 @@ public:
     // keyWord(std::string key, int value) {keyWordPoint[key] = value;}
     bool addKey(std::string key, int value, std::string comment);
     void printComments();
-    void readKeys();
+    void readKeys(std::string classNumber);
     bool isProperKeyWord(std::string key);
     std::string getComment(std::string key);
     int getValue(std::string key);

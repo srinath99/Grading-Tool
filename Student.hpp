@@ -9,13 +9,14 @@
 
 class Student {
 public:
-    Student(std::string fname, char lInit);
+    Student(std::string fname, char lInit, std::string classNumber);
     void printStudent(aMeta * meta);
     bool runGrading(keyWord * keys, aMeta * meta);
     void writeStudentToFile(aMeta * meta);
 
 private:
     std::string first_name;
+    std::string class_number;
     char last_init;
     int totalScore;
     double percentage;
@@ -23,7 +24,7 @@ private:
     bool addComment(int value, std::string comment);
     bool addKeyWord(keyWord * keys, std::string enteredWord);
     void printComments();
-
+    std::string getQualifier(int percentage);
 
 
 

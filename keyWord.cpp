@@ -3,7 +3,7 @@
 #include "colors.h"
 #include <iostream>
 #include <fstream>
-
+#include <cstdlib>
 
 keyWord::keyWord() {
 }
@@ -15,14 +15,15 @@ bool keyWord::addKey(std::string key, int value, std::string comment){
     return true;
 }
 
-void keyWord::readKeys() {
+void keyWord::readKeys(std::string classNumber) {
     // Read the keyWords from the file
     std::string key;
     int value;
     std::string comment;
+    std::string fileName = "keyWords_" + classNumber + ".txt";
 
     std::ifstream infile;
-    infile.open ("keyWords.txt");
+    infile.open (fileName);
     while (infile >> key >> value) {
         std::getline(infile, comment);
         addKey(key, value, comment);
@@ -39,7 +40,18 @@ std::string keyWord::getComment(std::string key) {
 }
 
 int keyWord::getValue(std::string key) {
-    return keyWordPoint[key];
+    int defaultValue = keyWordPoint[key];
+    char newValue[3] = "SN";
+
+    std::cout << CYAN << "The default point deduction is " << defaultValue << ". Enter deduction for student if different: " << ENDCOLORS;
+    std::cin.ignore();
+    std::cin.getline(newValue, 3);
+
+    if (isdigit(newValue[0])) {
+        return atoi(newValue);
+    }
+
+    return defaultValue;
 }
 
 void keyWord::printComments() {
